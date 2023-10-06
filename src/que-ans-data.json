@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "title": "How to create a responsive navigation menu with CSS?",
+    "body": "I'm trying to create a navigation menu for my website that adjusts nicely on different screen sizes. What CSS techniques should I use for responsive navigation menus? Any examples or libraries that can help?",
+    "tags": [
+      "css",
+      "responsive-design",
+      "navigation"
+    ],
+    "answers": [
+      {
+        "id": 101,
+        "body": "You can achieve a responsive navigation menu by using CSS Flexbox or CSS Grid for layout. There are also CSS frameworks like Bootstrap that provide responsive navigation components. Here's an example of using Flexbox for a responsive menu...",
+        "user": "user123",
+        "upvotes": 12,
+        "downvotes": 0
+      },
+      {
+        "id": 102,
+        "body": "I recommend checking out the 'Media Queries' feature in CSS. It allows you to apply different styles based on the screen width. Combined with a 'hamburger' menu for small screens and a regular menu for larger screens, you can create a responsive navigation menu...",
+        "user": "designer456",
+        "upvotes": 8,
+        "downvotes": 1
+      },
+      {
+        "id": 103,
+        "body": "Another approach is to use a CSS framework like Foundation. It provides responsive navigation components out of the box, and you can customize them to fit your design...",
+        "user": "dev567",
+        "upvotes": 6,
+        "downvotes": 0
+      },
+      {
+        "id": 104,
+        "body": "You can also consider using JavaScript and a library like 'React' to create a responsive navigation menu with dynamic behavior. This allows for more complex interactions on different screen sizes...",
+        "user": "reactFan789",
+        "upvotes": 5,
+        "downvotes": 2
+      },
+      {
+        "id": 105,
+        "body": "Responsive navigation menus are crucial for a good user experience. Make sure to test your menu on various devices and screen sizes to ensure it works as expected...",
+        "user": "tester101",
+        "upvotes": 3,
+        "downvotes": 0
+      }
+    ]
+  }
+]

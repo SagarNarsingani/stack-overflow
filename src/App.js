@@ -1,13 +1,15 @@
-import { Answers } from './Components/Answers';
 import { Navbar } from './Components/Navbar';
-import { Questions } from './Components/Questions';
+import { QuestionForm } from './Components/QuestionForm';
+// import { Answers } from './Components/Answers';
+// import { Questions } from './Components/Questions';
 
 function App() {
     return (
         <div>
             <Navbar />
             {/* <Questions /> */}
-            <Answers />
+            {/* <Answers /> */}
+            <QuestionForm />
         </div>
     );
 }
