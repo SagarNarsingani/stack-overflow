@@ -1,6 +1,7 @@
 import { Tag } from './Tag';
 import data from '../que-ans-data.json';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Answer = ({ answer }) => {
     return (
@@ -40,9 +41,12 @@ export const Question = () => {
             </div>
             <hr />
             <p className="my-6">{data[0].body}</p>
-            <section className="cursor-pointer text-right text-sm">
-                Edit
-            </section>
+
+            <Link to={`/ask?id=1`}>
+                <section className="cursor-pointer text-right text-sm">
+                    Edit
+                </section>
+            </Link>
             <h3 className="mt-2 font-bold text-xl">Answers</h3>
             <>
                 {data[0].answers.map((ans) => (

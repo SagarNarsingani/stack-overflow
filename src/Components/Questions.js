@@ -1,6 +1,7 @@
 import { Card } from './Card';
 
 import data from '../data.json';
+import { Link } from 'react-router-dom';
 
 export const Questions = () => {
     return (
@@ -9,9 +10,12 @@ export const Questions = () => {
                 <h3 className="font-bold text-xl inline-block self-center">
                     My Questions
                 </h3>
-                <button className="bg-[#0a95ff] text-white px-2 pb-1 rounded-lg right-12 inline-block">
-                    Ask Question
-                </button>
+
+                <Link to={'/ask'}>
+                    <div className="bg-[#0a95ff] text-white px-2 pb-1 rounded-lg right-12 inline-block">
+                        Ask Question
+                    </div>
+                </Link>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7">
                 {data.map((question) => (

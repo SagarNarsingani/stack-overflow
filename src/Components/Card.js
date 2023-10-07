@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Tag } from './Tag';
 
 export const Card = ({ question }) => {
@@ -28,19 +29,21 @@ export const Card = ({ question }) => {
     }
 
     return (
-        <div className="cursor-pointer relative p-2 rounded-md border-[1px] border-black h-[200px] w-[250px]">
-            <span className="font-bold text-lg">
-                {truncateWithEllipsis(question.title, 40)}
-            </span>
-            <hr />
-            <p className="text-sm my-2">
-                {truncateWithEllipsis(question.body)}
-            </p>
-            <div className="absolute bottom-2 p-1 left-0 w-full border-t-[1px] text-center text-sm border-t-[#d6d9dc]">
-                {truncateTags(question.tags).map((tag) => (
-                    <Tag tag={tag} />
-                ))}
+        <Link to={`/question/${question.que_id || question.id}`}>
+            <div className="cursor-pointer relative p-2 rounded-md border-[1px] border-black h-[200px] w-[250px]">
+                <span className="font-bold text-lg">
+                    {truncateWithEllipsis(question.title, 40)}
+                </span>
+                <hr />
+                <p className="text-sm my-2">
+                    {truncateWithEllipsis(question.body)}
+                </p>
+                <div className="absolute bottom-2 p-1 left-0 w-full border-t-[1px] text-center text-sm border-t-[#d6d9dc]">
+                    {truncateTags(question.tags).map((tag) => (
+                        <Tag tag={tag} />
+                    ))}
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };

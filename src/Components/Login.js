@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import postData from '../utils/postData';
 
 export const Login = () => {
     const [loginDetails, setLoginDetails] = useState({
@@ -18,13 +19,23 @@ export const Login = () => {
         });
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const data = await postData(
+            'http://localhost:5001/api/login',
+            loginDetails
+        );
+        console.log(data);
+    };
+
     return (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/3">
             <h1 className="font-bold text-2xl text-center m-6">
                 Every <span className="text-[#858a90]">Developer 💻</span> Needs
                 a Stack Overflow
             </h1>
-            <form className="w-fit mx-auto">
+            <form className="w-fit mx-auto" onSubmit={handleSubmit}>
                 <label className="mb-1 ml-1 font-bold text-sm">Username</label>
                 <input
                     name="username"
