@@ -40,8 +40,8 @@ export const Card = ({ question }) => {
                 </p>
                 <div className="absolute bottom-2 p-1 left-0 w-full border-t-[1px] text-center text-sm border-t-[#d6d9dc]">
                     {question.tags &&
-                        truncateTags(question.tags).map((tag) => (
-                            <Tag tag={tag} />
+                        truncateTags(question.tags).map((tag, index) => (
+                            <Tag key={index} tag={tag} />
                         ))}
                 </div>
             </div>

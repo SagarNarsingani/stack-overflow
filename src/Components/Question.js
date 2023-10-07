@@ -81,8 +81,8 @@ export const Question = () => {
         <div className="mt-16 px-4 py-14 w-4/5 mx-auto">
             <h1 className="text-2xl">{question?.title}</h1>
             <div className="mb-2">
-                {question?.tags?.map((tag) => (
-                    <Tag tag={tag} />
+                {question?.tags?.map((tag, index) => (
+                    <Tag key={index} tag={tag} />
                 ))}
             </div>
             <hr />
@@ -96,7 +96,12 @@ export const Question = () => {
             <h3 className="mt-2 font-bold text-xl">Answers</h3>
             <>
                 {answers?.map((ans) => (
-                    <Answer answer={ans} user={user} queId={question?._id} />
+                    <Answer
+                        key={ans.id}
+                        answer={ans}
+                        user={user}
+                        queId={question?._id}
+                    />
                 ))}
             </>
 
