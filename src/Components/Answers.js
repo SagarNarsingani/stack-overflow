@@ -10,10 +10,11 @@ export const Answers = () => {
     const [myAnswers, setMyAnswers] = useState([]);
 
     useEffect(() => {
-        getData(`/getMyAnswers?user_id=${user}`).then((data) =>
-            setMyAnswers(data)
-        );
-    });
+        getData(`/getAnswers?userId=${user}`).then((data) => {
+            console.log(data);
+            setMyAnswers(data.answers);
+        });
+    }, [user]);
 
     return (
         <div className="mt-16 py-2 px-4">
