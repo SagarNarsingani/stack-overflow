@@ -4,6 +4,8 @@
 // import { Questions } from './Components/Questions';
 // import { QuestionForm } from './Components/QuestionForm';
 
+import { Login } from './Components/Login';
+
 function App() {
     return (
         <div>
@@ -12,6 +14,7 @@ function App() {
             {/* <Answers /> */}
             {/* <QuestionForm /> */}
             {/* <Question /> */}
+            <Login />
         </div>
     );
 }
