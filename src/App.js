@@ -1,20 +1,17 @@
-// import { Navbar } from './Components/Navbar';
-// import { Question } from './Components/Question';
-// import { Answers } from './Components/Answers';
-// import { Questions } from './Components/Questions';
-// import { QuestionForm } from './Components/QuestionForm';
-
-import { Login } from './Components/Login';
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { GlobalContext } from './contexts/Global';
+import { useLocalStorage } from './hooks/localStorage';
 
 function App() {
+    const [getUserVal] = useLocalStorage('user');
+    const [user, setUser] = useState(getUserVal());
+
     return (
         <div>
-            {/* <Navbar /> */}
-            {/* <Questions /> */}
-            {/* <Answers /> */}
-            {/* <QuestionForm /> */}
-            {/* <Question /> */}
-            <Login />
+            <GlobalContext.Provider value={{ user, setUser }}>
+                <Outlet />
+            </GlobalContext.Provider>
         </div>
     );
 }

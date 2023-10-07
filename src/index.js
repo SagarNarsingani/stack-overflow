@@ -10,33 +10,40 @@ import { Questions } from './Components/Questions';
 import { Answers } from './Components/Answers';
 import { QuestionForm } from './Components/QuestionForm';
 import { Question } from './Components/Question';
+import App from './App';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Navbar />,
+        element: <App />,
         children: [
             {
-                path: 'questions',
-                element: <Questions />,
+                path: '/',
+                element: <Navbar />,
+                children: [
+                    {
+                        path: 'questions',
+                        element: <Questions />,
+                    },
+                    {
+                        path: 'answers',
+                        element: <Answers />,
+                    },
+                    {
+                        path: 'ask',
+                        element: <QuestionForm />,
+                    },
+                    {
+                        path: 'question/:id',
+                        element: <Question />,
+                    },
+                ],
             },
             {
-                path: 'answers',
-                element: <Answers />,
-            },
-            {
-                path: 'ask',
-                element: <QuestionForm />,
-            },
-            {
-                path: 'question/:id',
-                element: <Question />,
+                path: 'login',
+                element: <Login />,
             },
         ],
-    },
-    {
-        path: 'login',
-        element: <Login />,
     },
 ]);
 
