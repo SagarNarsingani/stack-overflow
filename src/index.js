@@ -9,7 +9,7 @@ import { Navbar } from './Components/Navbar';
 import { Questions } from './Components/Questions';
 import { Answers } from './Components/Answers';
 import { QuestionForm } from './Components/QuestionForm';
-import { Question } from './Components/Question';
+import { getQuestionData, Question } from './Components/Question';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -36,6 +36,7 @@ const router = createBrowserRouter([
                     {
                         path: 'question/:id',
                         element: <Question />,
+                        loader: getQuestionData,
                     },
                 ],
             },

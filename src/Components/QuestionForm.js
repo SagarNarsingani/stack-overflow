@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { GlobalContext } from '../contexts/Global';
+import postData from '../utils/postData';
 
 export const QuestionForm = () => {
+    const { user } = useContext(GlobalContext);
     const [question, setQuestion] = useState({ title: '', body: '', tags: '' });
-
     const handleChange = (event) => {
         const name = event.target.name;
         const val = event.target.value;
@@ -15,9 +17,12 @@ export const QuestionForm = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Question Submitted', question);
+        const tags = question.tags.length
+            ? question.tags.split(',').map((tag) => tag.trim())
+            : [];
+        await postData('postQuestion', { userId: user, ...question, tags });
     };
 
     return (

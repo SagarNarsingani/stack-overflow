@@ -1,5 +1,6 @@
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
+async function postData(url, data = {}) {
+    if (!url) return {};
+    const response = await fetch(`http://localhost:5001/api/${url}`, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',

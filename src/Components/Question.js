@@ -1,7 +1,8 @@
 import { Tag } from './Tag';
 import data from '../que-ans-data.json';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { getData } from '../utils/getData';
 
 const Answer = ({ answer }) => {
     return (
@@ -29,18 +30,25 @@ const Answer = ({ answer }) => {
     );
 };
 
+export async function getQuestionData({ params }) {
+    const questionData = await getData(`getQuestionData?id=${params.id}`);
+    return { question: questionData.question };
+}
+
 export const Question = () => {
     const [answer, setAnswer] = useState('');
+
+    const { question } = useLoaderData();
     return (
         <div className="mt-16 px-4 py-14 w-4/5 mx-auto">
-            <h1 className="text-2xl">{data[0].title}</h1>
+            <h1 className="text-2xl">{question.title}</h1>
             <div className="mb-2">
-                {data[0].tags.map((tag) => (
+                {question.tags?.map((tag) => (
                     <Tag tag={tag} />
                 ))}
             </div>
             <hr />
-            <p className="my-6">{data[0].body}</p>
+            <p className="my-6">{question.body}</p>
 
             <Link to={`/ask?id=1`}>
                 <section className="cursor-pointer text-right text-sm">
@@ -49,7 +57,7 @@ export const Question = () => {
             </Link>
             <h3 className="mt-2 font-bold text-xl">Answers</h3>
             <>
-                {data[0].answers.map((ans) => (
+                {question.answers?.map((ans) => (
                     <Answer answer={ans} />
                 ))}
             </>

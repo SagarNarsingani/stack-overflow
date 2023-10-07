@@ -3,12 +3,21 @@ import { Card } from './Card';
 
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../contexts/Global';
+import { getData } from '../utils/getData';
 
 export const Questions = () => {
     const { user } = useContext(GlobalContext);
-    const { questions: myQuestions } = user;
+    const [questions, setQuestion] = useState({ my: [], others: [] });
 
-    const otherQuestions = [];
+    useEffect(() => {
+        getData(`/getQuestions?userId=${user}`).then((data) => {
+            console.log('here', data);
+            setQuestion({
+                my: data?.data?.myQuestions,
+                others: data?.data?.otherQuestions,
+            });
+        });
+    }, [user]);
 
     useEffect(() => {});
     return (
@@ -25,10 +34,10 @@ export const Questions = () => {
                 </Link>
             </div>
 
-            {myQuestions.length ? (
+            {questions.my?.length ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7">
-                    {myQuestions.map((question) => (
-                        <Card key={question.id} question={question} />
+                    {questions.my.map((question) => (
+                        <Card key={question._id} question={question} />
                     ))}
                 </div>
             ) : (
@@ -38,10 +47,10 @@ export const Questions = () => {
             )}
 
             <h3 className="my-4 font-bold text-xl">Other Questions</h3>
-            {otherQuestions.length ? (
+            {questions.others?.length ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7">
-                    {otherQuestions.map((question) => (
-                        <Card key={question.id} question={question} />
+                    {questions.others.map((question) => (
+                        <Card key={question._id} question={question} />
                     ))}
                 </div>
             ) : (

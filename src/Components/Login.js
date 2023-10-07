@@ -30,14 +30,11 @@ export const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const data = await postData(
-            'http://localhost:5001/api/login',
-            loginDetails
-        );
+        const data = await postData('login', loginDetails);
 
         if (data && data.status === 200) {
-            setUser(data.user);
-            setUserVal(data.user);
+            setUser(data.user._id);
+            setUserVal(data.user._id);
         } else {
             setError(data.message);
         }

@@ -29,7 +29,7 @@ export const Card = ({ question }) => {
     }
 
     return (
-        <Link to={`/question/${question.que_id || question.id}`}>
+        <Link to={`/question/${question.id || question._id}`}>
             <div className="cursor-pointer relative p-2 rounded-md border-[1px] border-black h-[200px] w-[250px]">
                 <span className="font-bold text-lg">
                     {truncateWithEllipsis(question.title, 40)}
@@ -39,9 +39,10 @@ export const Card = ({ question }) => {
                     {truncateWithEllipsis(question.body)}
                 </p>
                 <div className="absolute bottom-2 p-1 left-0 w-full border-t-[1px] text-center text-sm border-t-[#d6d9dc]">
-                    {truncateTags(question.tags).map((tag) => (
-                        <Tag tag={tag} />
-                    ))}
+                    {question.tags &&
+                        truncateTags(question.tags).map((tag) => (
+                            <Tag tag={tag} />
+                        ))}
                 </div>
             </div>
         </Link>
