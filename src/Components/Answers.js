@@ -11,7 +11,6 @@ export const Answers = () => {
 
     useEffect(() => {
         getData(`/getAnswers?userId=${user}`).then((data) => {
-            console.log(data);
             setMyAnswers(data.answers);
         });
     }, [user]);

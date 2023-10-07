@@ -6,7 +6,6 @@ import { useLocalStorage } from '../hooks/localStorage';
 
 export const Login = () => {
     const { user, setUser } = useContext(GlobalContext);
-    console.log(user);
     const [, setUserVal] = useLocalStorage('user');
     const [loginDetails, setLoginDetails] = useState({
         username: '',

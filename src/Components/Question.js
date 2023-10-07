@@ -5,10 +5,24 @@ import { getData } from '../utils/getData';
 import postData from '../utils/postData';
 import { GlobalContext } from '../contexts/Global';
 
-const Answer = ({ answer }) => {
+const Answer = ({ answer, user, queId }) => {
+    const [ans, setAns] = useState(answer);
+
+    const reactOnAns = async (change) => {
+        const data = await postData('react', {
+            ansId: answer.id,
+            userId: user,
+            queId,
+            change,
+        });
+
+        if (data.status === 200) {
+            setAns((prev) => ({ ...prev, upvotes: prev.upvotes + 1 }));
+        }
+    };
     return (
         <div className="relative">
-            <p className="mt-6 mb-16">{answer.body}</p>
+            <p className="mt-6 mb-16">{ans.body}</p>
             <div className="mb-2 absolute right-0 bottom-0">
                 <img
                     alt="user"
@@ -18,11 +32,14 @@ const Answer = ({ answer }) => {
                     className="bg-[#d6d9dc] rounded-full inline-block mx-2"
                 />
                 <section className="inline-block">
-                    <p className="inline-block mx-2 cursor-pointer">
-                        upvote {answer.upvotes}
+                    <p
+                        onClick={() => reactOnAns(1)}
+                        className="inline-block mx-2 cursor-pointer"
+                    >
+                        upvote {ans.upvotes}
                     </p>
                     <p className="inline-block mx-2 cursor-pointer">
-                        downvote {answer.downvotes}
+                        downvote {ans.downvotes}
                     </p>
                 </section>
             </div>
@@ -79,7 +96,7 @@ export const Question = () => {
             <h3 className="mt-2 font-bold text-xl">Answers</h3>
             <>
                 {answers?.map((ans) => (
-                    <Answer answer={ans} />
+                    <Answer answer={ans} user={user} queId={question?._id} />
                 ))}
             </>
 

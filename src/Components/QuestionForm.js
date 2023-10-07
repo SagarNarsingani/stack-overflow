@@ -13,7 +13,6 @@ export const QuestionForm = () => {
         const id = searchParams.get('id');
         if (id) {
             getData(`getQuestionData?id=${id}`).then((data) => {
-                console.log(data);
                 setQuestion({
                     title: data.question?.title,
                     body: data.question?.body,

@@ -11,7 +11,6 @@ export const Questions = () => {
 
     useEffect(() => {
         getData(`/getQuestions?userId=${user}`).then((data) => {
-            console.log('here', data);
             setQuestion({
                 my: data?.data?.myQuestions,
                 others: data?.data?.otherQuestions,

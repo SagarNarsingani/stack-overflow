@@ -7,7 +7,6 @@ function App() {
     const [getUserVal] = useLocalStorage('user');
     const [user, setUser] = useState(getUserVal());
 
-    console.log(user);
     return (
         <div>
             {!user && <Navigate to={'/login'} replace={true} />}
